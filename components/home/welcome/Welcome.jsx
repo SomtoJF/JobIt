@@ -16,6 +16,7 @@ const jobTypes = ["Full-Time", "Part-Time", "Contractor"];
 export default function Welcome() {
 	const router = useRouter();
 	const [activeJobType, setActiveJobType] = useState("Full-Time");
+	const [searchInput, setSearchInput] = useState("");
 	return (
 		<View>
 			<View style={styles.container}>
@@ -28,9 +29,11 @@ export default function Welcome() {
 				<View style={styles.searchWrapper}>
 					<TextInput
 						style={styles.searchInput}
-						value=""
+						value={searchInput}
 						placeholder="Search for your dream jobs..."
-						onChange={() => {}}
+						onChangeText={(text) => {
+							setSearchInput(text);
+						}}
 					></TextInput>
 				</View>
 				<TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
