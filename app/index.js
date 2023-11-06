@@ -1,5 +1,4 @@
 import { SafeAreaView, Text, ScrollView, View } from "react-native";
-import { useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { COLORS, SIZES, icons, images } from "../constants";
 import {
@@ -11,6 +10,7 @@ import {
 
 const Home = () => {
 	const router = useRouter();
+
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
 			<Stack.Screen
