@@ -10,11 +10,16 @@ import {
 import styles from "./popularjobs.style";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 import { COLORS, SIZES } from "../../../constants";
+import useFetch from "../../../hooks/useFetch";
 
 export default function Popularjobs() {
-	const isLoading = false;
-	const error = false;
 	const router = useRouter();
+	const { data, isLoading, error } = useFetch("search", {
+		query: "react developer",
+		num_pages: 1,
+	});
+
+	console.log(data);
 
 	return (
 		<View style={styles.container}>
@@ -33,7 +38,7 @@ export default function Popularjobs() {
 					"Something went wrong"
 				) : (
 					<FlatList
-						data={[1, 2, 3, 4]}
+						data={data}
 						renderItem={({ item }) => <PopularJobCard item={item} />}
 						keyExtractor={(item) => item?.job_id}
 						contentContainerStyle={{ columnGap: SIZES.medium }}
