@@ -19,6 +19,8 @@ import { COLORS, icons, SIZES } from "../../constants";
 import { useFetchJobDetails } from "../../hooks/useFetch";
 import { Stack, useGlobalSearchParams, useRouter } from "expo-router";
 
+const tabs = ["About", "Qualifications", "Responsibilities"];
+
 export default function JobDetails() {
 	const params = useGlobalSearchParams();
 	const router = useRouter();
@@ -27,6 +29,7 @@ export default function JobDetails() {
 		job_id: params.id,
 	});
 	const [refreshing, setRefreshing] = useState(false);
+	const [activeTab, setActiveTab] = useState(tabs[0]);
 	const onRefresh = () => {};
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -69,7 +72,11 @@ export default function JobDetails() {
 								companyName={data[0].employer_name}
 								location={data[0].job_country}
 							/>
-							<JobTabs />
+							<JobTabs
+								tabs={tabs}
+								activeTab={activeTab}
+								setActiveTab={setActiveTab}
+							/>
 						</View>
 					)}
 				</ScrollView>
