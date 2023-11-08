@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, Image, View } from "react-native";
 import styles from "./popularjobcard.style";
 import { checkImageURL } from "../../../../utils";
+import { icons } from "../../../../constants";
 
 export default function PopularJobCard({ item, selectedJob, handleCardPress }) {
 	return (
@@ -16,7 +17,7 @@ export default function PopularJobCard({ item, selectedJob, handleCardPress }) {
 					source={{
 						uri: checkImageURL(item.employer_logo)
 							? item.employer_logo
-							: "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
+							: icons.fallbackCompanyLogo,
 					}}
 					resizeMode="contain"
 					style={styles.logoImage}
