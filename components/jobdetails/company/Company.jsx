@@ -12,17 +12,19 @@ export default function Company({
 }) {
 	return (
 		<View style={styles.container}>
-			<View style={styles.logoBox}></View>
-			<Image
-				source={{
-					uri: checkImageURL(companyLogo)
-						? companyLogo
-						: icons.fallbackCompanyLogo,
-				}}
-				style={styles.logoImage}
-			/>
+			<View style={styles.logoBox}>
+				<Image
+					source={{
+						uri: checkImageURL(companyLogo)
+							? companyLogo
+							: icons.fallbackCompanyLogo,
+					}}
+					style={styles.logoImage}
+					resizeMode="contain"
+				/>
+			</View>
 			<View style={styles.jobTitleBox}>
-				<Text style={styles.jobTitle}>{jobTitle}</Text>
+				<Text style={{ ...styles.jobTitle, fontWeight: 700 }}>{jobTitle}</Text>
 			</View>
 			<View style={styles.companyInfoBox}>
 				<Text style={styles.companyName}>{companyName} / </Text>
@@ -32,6 +34,7 @@ export default function Company({
 						resizeMode="contain"
 						style={styles.locationImage}
 					/>
+					<Text style={styles.locationName}>{location}</Text>
 				</View>
 			</View>
 		</View>
