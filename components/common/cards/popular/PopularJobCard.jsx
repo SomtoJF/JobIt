@@ -9,7 +9,7 @@ export default function PopularJobCard({ item, selectedJob, handleCardPress }) {
 		<TouchableOpacity
 			style={styles.container(selectedJob, item)}
 			onPress={() => {
-				handleCardPress;
+				handleCardPress(item);
 			}}
 		>
 			<TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
