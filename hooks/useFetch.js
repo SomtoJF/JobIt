@@ -27,8 +27,8 @@ export default function useFetch(endpoint, query) {
 			const data = response.data.data;
 			setData(data);
 		} catch (error) {
-			setError(error);
-			setData(JSON.parse(fallbackData));
+			// setError(error);
+			setData(fallbackData);
 			alert("An error occured, using fallback data");
 		} finally {
 			setIsLoading(false);
