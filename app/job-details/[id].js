@@ -31,6 +31,36 @@ export default function JobDetails() {
 	const [refreshing, setRefreshing] = useState(false);
 	const [activeTab, setActiveTab] = useState(tabs[0]);
 	const onRefresh = () => {};
+
+	const displayTabContent = () => {
+		switch (activeTab) {
+			case "About":
+				return (
+					<JobAbout info={data[0].job_description ?? "No data provided"} />
+				);
+				break;
+			case "Qualifications":
+				return (
+					<Specifics
+						title="Qualifications"
+						points={data[0].job_highlights?.Qualifications ?? ["N / A"]}
+					/>
+				);
+				break;
+			case "Responsibilities":
+				return (
+					<Specifics
+						title="Responsibilities"
+						points={data[0].job_highlights?.Responsibilities ?? ["N / A"]}
+					/>
+				);
+				break;
+
+			default:
+				break;
+		}
+	};
+
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
 			<Stack.Screen
@@ -77,6 +107,7 @@ export default function JobDetails() {
 								activeTab={activeTab}
 								setActiveTab={setActiveTab}
 							/>
+							{displayTabContent()}
 						</View>
 					)}
 				</ScrollView>
