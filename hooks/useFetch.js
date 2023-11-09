@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { RAPID_API_KEY } from "@env";
 import axios from "axios";
+import fallbackData from "../datastore/homeData.json";
 
 const APIKEY = RAPID_API_KEY;
 
@@ -23,10 +24,12 @@ export default function useFetch(endpoint, query) {
 		setIsLoading(true);
 		try {
 			const response = await axios.request(options);
-			setData(response.data.data);
+			const data = response.data.data;
+			setData(data);
 		} catch (error) {
 			setError(error);
-			alert("An error occured");
+			setData(JSON.parse(fallbackData));
+			alert("An error occured, using fallback data");
 		} finally {
 			setIsLoading(false);
 		}
@@ -83,3 +86,15 @@ const useFetchJobDetails = (query) => {
 };
 
 export { useFetchJobDetails };
+
+const storeLocalData = async (absoluteFilepath, data) => {
+	try {
+		const response = await axios.post("http://localhost:3000", {
+			filepath: absoluteFilepath,
+			data: data,
+		});
+		console.log(response);
+	} catch (err) {
+		throw err;
+	}
+};
