@@ -1,18 +1,28 @@
 {
-	"expo": {
-		"scheme": "acme",
-		"icon": "./assets/icon.png",
-		"web": {
-			"bundler": "metro"
-		},
-		"plugins": ["expo-router"],
-		"name": "JobIt",
-		"slug": "JobIt",
-		"android": {
-			"package": "com.somtojf.JobIt"
-		},
-		"ios": {
-			"bundleIdentifier": "com.somtojf.JobIt"
-		}
-	}
+  "expo": {
+    "scheme": "acme",
+    "icon": "./assets/icon.png",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "JobIt",
+    "slug": "JobIt",
+    "android": {
+      "package": "com.somtojf.JobIt"
+    },
+    "ios": {
+      "bundleIdentifier": "com.somtojf.JobIt"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "1fd5dc55-e222-4544-990f-c9421af5b750"
+      }
+    }
+  }
 }
